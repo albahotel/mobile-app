@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Hotel Remote</string>
+
+    <string name="menu_dashboard">Главная</string>
+    <string name="menu_schedule">Расписание</string>
+    <string name="menu_requests">Запросы</string>
+    <string name="menu_qr_scan">Отсканировать QR-код</string>
+
+    <string name="ttl_requests_add">Добавление заявки</string>
+</resources>
