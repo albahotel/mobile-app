@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         style="@style/Widget.Material3.CardView.Elevated"
-        app:cardElevation="5dp">
+        app:cardElevation="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,20 +31,96 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/requests_add_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ttl_requests_add"
                 style="@style/Widget.RHotel.TextView.Title"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/requests_add_type_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/desc_requests_add_type"
+                android:layout_marginTop="6dp"
+                style="@style/Widget.RHotel.TextView.Description"
+                app:layout_constraintTop_toBottomOf="@id/requests_add_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/requests_add_type_selection_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="@string/hnt_requests_add_type"-->
+<!--                android:layout_marginTop="6dp"-->
+<!--                app:startIconDrawable="@drawable/request_type_icon"-->
+<!--                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/requests_add_type_description"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent">-->
+<!--                <com.google.android.material.textfield.MaterialAutoCompleteTextView-->
+<!--                    android:id="@+id/requests_add_type_selection"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:inputType="none"-->
+<!--                    app:simpleItems="@array/example_items" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <Spinner
+                android:id="@+id/requests_add_type_selection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hnt_requests_add_type"
+                android:layout_marginTop="6dp"
+                android:minHeight="55dp"
+                android:inputType="none"
+                app:layout_constraintTop_toBottomOf="@id/requests_add_type_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/requests_add_note_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/desc_requests_add_note"
+                android:layout_marginTop="6dp"
+                style="@style/Widget.RHotel.TextView.Description"
+                app:layout_constraintTop_toBottomOf="@id/requests_add_type_selection"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/requests_add_note_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hnt_requests_add_note"
+                android:layout_marginTop="6dp"
+                app:startIconDrawable="@drawable/note_icon"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@id/requests_add_note_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:endIconMode="clear_text">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/requests_add_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/requests_add_submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/ttl_requests_add_submit"
+                app:layout_constraintTop_toBottomOf="@id/requests_add_note_layout"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

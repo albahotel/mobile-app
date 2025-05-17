@@ -1,3 +1,5 @@
+// import org.jetbrains.kotlin.gradle.idea.proto.com.google.protobuf.option
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -36,24 +38,8 @@ android {
     }
 }
 
-protobuf {
-    protoc {
-        artifact = "com.google.protobuf:protoc:3.20.1"
-    }
-    generateProtoTasks {
-        all().configureEach {
-            builtins {
-                id = "java"
-                id("java") {
-                    option("lite")
-                }
-            }
-        }
-    }
-}
-
 dependencies {
-    implementation(libs.protobuf.javalite)
+    implementation(libs.okhttp)
     implementation(libs.protobuf.kotlin.lite)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -67,4 +53,27 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+protobuf {
+    protoc {
+        artifact = if (osdetector.os == "osx") {
+            // support both Apple Silicon and Intel chipsets
+            val arch = System.getProperty("os.arch")
+            val suffix = if (arch == "x86_64") "x86_64" else "aarch_64"
+            "${libs.protobuf.protoc.get()}:osx-$suffix"
+        } else
+            libs.protobuf.protoc.get().toString()
+    }
+    plugins {
+        generateProtoTasks {
+            all().forEach {
+                it.builtins {
+                    create("java") {
+                        option("lite")
+                    }
+                }
+            }
+        }
+    }
 }

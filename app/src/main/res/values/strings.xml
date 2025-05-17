@@ -7,4 +7,23 @@
     <string name="menu_qr_scan">Отсканировать QR-код</string>
 
     <string name="ttl_requests_add">Добавление заявки</string>
+    <string name="desc_requests_add_type">Выберите тип требуемой услуги</string>
+    <string name="hnt_requests_add_type">Тип услуги</string>
+    <string name="desc_requests_add_note">Введите текст дополнительной информации, к примеру «с 8:00 до 10:00 не беспокоить» (необязательное поле для заполнения)</string>
+    <string name="hnt_requests_add_note">Дополнения (опционально)</string>
+    <string name="ttl_requests_add_submit">Добавить</string>
+
+    <string name="ttl_remote_general_statistic">Номер %d</string>
+    <string name="ttl_remote_general_temperature">Температура воздуха: %d</string>
+    <string name="ttl_remote_general_humidity">Влажность воздуха: %d%%</string>
+    <string name="ttl_remote_general_open_panel">Панель управления</string>
+
+    <string name="ttl_remote_general_door">Входная дверь</string>
+    <string name="ttl_remote_general_door_lock">Статус двери: %s</string>
+    <string-array name="sts_remote_general_door_lock">
+        открыта
+        закрыта
+    </string-array>
+    <string name="ttl_remote_general_door_lock_open">Открыть</string>
+    <string name="ttl_remote_general_door_lock_close">Закрыть</string>
 </resources>

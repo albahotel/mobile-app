@@ -4,4 +4,12 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="Widget.RHotel.TextView.SubTitle" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Widget.RHotel.TextView.Description" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

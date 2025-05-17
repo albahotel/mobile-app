@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import dev.rexe.hotelremote.R
 
 class RemoteScheduleFragment : Fragment() {
@@ -26,6 +28,8 @@ class RemoteScheduleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_remote_schedule, container, false)
+        val inflated = inflater.inflate(R.layout.fragment_remote_schedule, container, false)
+
+        return inflated
     }
 }

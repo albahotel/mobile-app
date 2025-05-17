@@ -1,29 +1,29 @@
 syntax = "proto3";
 
 enum Statuses {
-  OK = 0;
-  Error = 1;
+    OK = 0;
+    Error = 1;
 }
 
-enum LighStates {
-  On = 0;
-  Off = 1;
+enum LightStates {
+    On = 0;
+    Off = 1;
 }
 
 enum DoorLockStates {
-  Open = 0;
-  Close = 1;
+    Open = 0;
+    Close = 1;
 }
 
 enum States {
-  LightOn = 0;
-  LightOff = 1;
-  DoorLockOpen = 2;
-  DoorLockClose = 3;
+    LightOn = 0;
+    LightOff = 1;
+    DoorLockOpen = 2;
+    DoorLockClose = 3;
 }
 
 message IdentifyRequest {
-  string token = 1;
+    string token = 1;
 }
 
 message GetState {}
@@ -31,36 +31,36 @@ message GetState {}
 message GetInfo {}
 
 message SetState {
-  States state = 1;
+    States state = 1;
 }
 
 message State {
-  LighStates light_on = 1;
-  DoorLockStates door_lock = 2;
-  float temperature = 3;
-  float pressure = 4;
-  float humidity = 5;
+    LightStates light_on = 1;
+    DoorLockStates door_lock = 2;
+    float temperature = 3;
+    float pressure = 4;
+    float humidity = 5;
 }
 
 message Info {
-  string ip = 1;
-  string mac = 2;
-  string ble_name = 3;
-  string token = 4;
+    string ip = 1;
+    string mac = 2;
+    string ble_name = 3;
+    string token = 4;
 }
 
 message ClientMessage {
-  oneof message {
-    GetInfo get_info = 1;
-    SetState set_state = 2;
-    GetState get_state = 3;
-  }
+    oneof message {
+        GetInfo get_info = 1;
+        SetState set_state = 2;
+        GetState get_state = 3;
+    }
 }
 
 message ControllerResponse {
-  oneof response {
-    Info info = 1;
-    State state = 2;
-    Statuses status = 3;
-  }
+    oneof response {
+        Info info = 1;
+        State state = 2;
+        Statuses status = 3;
+    }
 }
