@@ -21,6 +21,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputEditText
 import dev.rexe.hotelremote.R
 import dev.rexe.hotelremote.adapters.RequestsAdapter
+import dev.rexe.hotelremote.managers.BluetoothDoorManager
 import dev.rexe.hotelremote.managers.HTTPManager
 import dev.rexe.hotelremote.managers.RequestsManager
 
@@ -64,7 +65,7 @@ class RemoteRequestsFragment : Fragment() {
             val textEdit: TextInputEditText = inflated.findViewById<TextInputEditText>(R.id.requests_add_note)
             viewModel.setSubmitEnabled(false)
             RequestsManager.sendNewRequest(RequestsManager.RequestObject(
-                roomNumber = 101,
+                roomNumber = BluetoothDoorManager.shr?.getString("roomNumber", "0")!!.toInt(),
                 categoryName = (spinner.selectedItem as RequestsManager.RequestType).name,
                 comment = textEdit.text?.length?.let { if (it > 0) textEdit.text.toString() else null }), object : RequestsManager.RequestCreationListener {
                 override fun onCreated() {
@@ -141,6 +142,11 @@ class RemoteRequestsFragment : Fragment() {
                 // TODO("Stub!")
             }
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     fun setSpinnerAdapter(data: ArrayList<RequestsManager.RequestType>) {

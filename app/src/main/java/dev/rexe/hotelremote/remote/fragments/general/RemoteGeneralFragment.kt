@@ -68,11 +68,13 @@ class RemoteGeneralFragment : Fragment() {
             viewModel.setDNDMode(!(viewModel.dndMode.value ?: true))
 
             RequestsManager.sendNewRequest(RequestsManager.RequestObject(
-                roomNumber = 101,
+                roomNumber = BluetoothDoorManager.shr?.getString("roomNumber", "0")!!.toInt(),
                 categoryName = "Обслуживание и комфорт",
                 comment = "Не беспокоить"
             ))
         }
+        inflated.findViewById<MaterialTextView>(R.id.remote_general_statistic_title).text = getString(R.string.ttl_remote_general_statistic,
+            BluetoothDoorManager.shr?.getString("roomNumber", "0")!!)
         return inflated
     }
 

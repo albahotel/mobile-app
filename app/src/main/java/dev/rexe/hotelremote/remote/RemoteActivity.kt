@@ -54,10 +54,9 @@ class RemoteActivity : AppCompatActivity() {
                     Log.e("Main", "Unable to initialize Bluetooth")
                     finish()
                 }
-                // perform device connection
-                bluetooth.connect("C0:BB:CC:DD:EE:22", "gG55zXtXrdThTl9y")
 
                 BluetoothDoorManager.bluetoothLEService = bluetooth
+                BluetoothDoorManager.connect()
             }
         }
 
@@ -73,9 +72,11 @@ class RemoteActivity : AppCompatActivity() {
                 BluetoothLEService.ACTION_GATT_CONNECTED -> {
                     Log.d("Main", "Connected")
                     Toast.makeText(context, "Connected!", Toast.LENGTH_SHORT).show()
+                    BluetoothDoorManager.connected = true
                 }
                 BluetoothLEService.ACTION_GATT_DISCONNECTED -> {
                     Log.d("Main", "Disconnected")
+                    BluetoothDoorManager.connected = false
                 }
                 BluetoothLEService.ACTION_GATT_SERVICES_DISCOVERED -> {
                     BluetoothDoorManager.fullDataInFields()
@@ -119,6 +120,8 @@ class RemoteActivity : AppCompatActivity() {
             addAction(BluetoothLEService.ACTION_GATT_UPSTREAM)
             addAction(BluetoothLEService.ACTION_DATA_AVAILABLE)
         }, ContextCompat.RECEIVER_NOT_EXPORTED)
+
+        BluetoothDoorManager.getSharedPreferences(this)
 
         ViewCompat.setOnApplyWindowInsetsListener(toolbar!!, { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -176,6 +179,7 @@ class RemoteActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, RemoteGeneralFragment.newInstance())
                         .commitNowAllowingStateLoss()
+                    BluetoothDoorManager.connect()
                 }
             }
         }

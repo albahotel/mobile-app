@@ -13,7 +13,7 @@
     <string name="hnt_requests_add_note">Дополнения (опционально)</string>
     <string name="ttl_requests_add_submit">Добавить</string>
 
-    <string name="ttl_remote_general_statistic">Номер 101</string>
+    <string name="ttl_remote_general_statistic">Номер %s</string>
     <string name="ttl_remote_general_temperature">Температура воздуха: 20 C</string>
     <string name="ttl_remote_general_humidity">Влажность воздуха: 45%</string>
     <string name="ttl_remote_general_open_panel">Панель управления</string>

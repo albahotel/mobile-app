@@ -1,6 +1,9 @@
 package dev.rexe.hotelremote.managers
 
 import android.bluetooth.BluetoothGattCharacteristic
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import dev.rexe.hotelremote.bluetooth.BluetoothLEService
 import dev.rexe.hotelremote.protofiles.Message
 
@@ -10,6 +13,23 @@ object BluetoothDoorManager {
 
     private var doorLockStatus: Boolean = true
     private var lightStatus: Boolean = false
+
+    var connected = false
+
+    var shr: SharedPreferences? = null
+
+    fun getSharedPreferences(context: Context) {
+        BluetoothDoorManager.shr = context.getSharedPreferences("auth", MODE_PRIVATE)
+    }
+
+    fun connect() {
+        shr?.let {
+            if (connected)
+                bluetoothLEService?.disconnect()
+            if (it.contains("doorMac"))
+                bluetoothLEService?.connect(it.getString("doorMac", "")!!, it.getString("doorToken", "")!!)
+        }
+    }
 
     fun fullDataInFields() {
         if (bluetoothLEService != null) {

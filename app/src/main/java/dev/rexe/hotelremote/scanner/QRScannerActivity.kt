@@ -29,6 +29,7 @@ import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import androidx.core.content.edit
+import dev.rexe.hotelremote.managers.BluetoothDoorManager
 
 class QRScannerActivity : AppCompatActivity() {
     private lateinit var cameraProvider: ProcessCameraProvider
@@ -79,8 +80,13 @@ class QRScannerActivity : AppCompatActivity() {
                         findViewById<MaterialTextView>(R.id.qr_scanner_status).setText(R.string.sts_qr_scanner_validating)
                         if (HotelCodeValidator.validate(qrCodeValue)) {
                             File(applicationContext.filesDir.parent, "shared_prefs/auth.xml").createNewFile()
-                            val shr: SharedPreferences = getSharedPreferences("auth", MODE_PRIVATE)
-                            shr.edit { putString("keyStroke", qrCodeValue) }
+                            val parsed = qrCodeValue.split(";")
+                            BluetoothDoorManager.shr?.edit {
+                                putString("serverToken", parsed[0])
+                                putString("doorToken", parsed[1])
+                                putString("doorMac", parsed[2])
+                                putString("roomNumber", parsed[3])
+                            }
                             val intent: Intent = Intent("finish_activity")
                             sendBroadcast(intent)
                             finish()
