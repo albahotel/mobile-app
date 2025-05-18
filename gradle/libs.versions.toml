@@ -1,5 +1,10 @@
 [versions]
 agp = "8.11.0-alpha10"
+barcodeScanning = "17.3.0"
+cameraCamera2 = "1.4.2"
+cameraCore = "1.4.2"
+cameraLifecycle = "1.4.2"
+cameraView = "1.4.2"
 kotlin = "2.0.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -20,9 +25,15 @@ protobufJavaliteVersion = "4.31.0"
 protobufKotlinLite = "4.31.0"
 protoPlugin = "0.9.5"
 protoProtoc = "3.21.0"
+zxing = "1.9.8"
 
 [libraries]
+camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraCore" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
+camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraCamera2" }
+camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraLifecycle" }
+camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraView" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -40,6 +51,7 @@ protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.
 protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobufJavalite" }
 protobuf-kotlin-lite = { module = "com.google.protobuf:protobuf-kotlin-lite", version.ref = "protobufKotlinLite" }
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoProtoc" }
+zxing = { module = "me.dm7.barcodescanner:zxing", version.ref = "zxing" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

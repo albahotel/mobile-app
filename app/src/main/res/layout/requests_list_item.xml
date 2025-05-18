@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/request_item_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        style="@style/Widget.Material3.CardView.Elevated"
+        app:cardElevation="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/request_item_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:layout_marginStart="6dp"
+                style="@style/Widget.RHotel.TextView.Title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/request_item_remove_button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/request_item_remove_button"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:contentDescription="@string/ttl_request_item_remove"
+                style="?attr/materialIconButtonFilledTonalStyle"
+                app:icon="@drawable/close_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/request_item_creation_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Creation time: idi nahui"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="6dp"
+                style="@style/Widget.RHotel.TextView.SubTitle"
+                app:layout_constraintTop_toBottomOf="@id/request_item_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/request_item_remove_button" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/request_item_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Comment: sldjfouns"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="6dp"
+                style="@style/Widget.RHotel.TextView.Description"
+                app:layout_constraintTop_toBottomOf="@id/request_item_creation_time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

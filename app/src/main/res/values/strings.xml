@@ -13,17 +13,37 @@
     <string name="hnt_requests_add_note">Дополнения (опционально)</string>
     <string name="ttl_requests_add_submit">Добавить</string>
 
-    <string name="ttl_remote_general_statistic">Номер %d</string>
-    <string name="ttl_remote_general_temperature">Температура воздуха: %d</string>
-    <string name="ttl_remote_general_humidity">Влажность воздуха: %d%%</string>
+    <string name="ttl_remote_general_statistic">Номер 101</string>
+    <string name="ttl_remote_general_temperature">Температура воздуха: 20 C</string>
+    <string name="ttl_remote_general_humidity">Влажность воздуха: 45%</string>
     <string name="ttl_remote_general_open_panel">Панель управления</string>
+
+    <string name="sts_remote_general_door_lock_open">открыта</string>
+    <string name="sts_remote_general_door_lock_close">закрыта</string>
 
     <string name="ttl_remote_general_door">Входная дверь</string>
     <string name="ttl_remote_general_door_lock">Статус двери: %s</string>
-    <string-array name="sts_remote_general_door_lock">
-        открыта
-        закрыта
-    </string-array>
     <string name="ttl_remote_general_door_lock_open">Открыть</string>
     <string name="ttl_remote_general_door_lock_close">Закрыть</string>
+
+    <string name="ttl_remote_general_dnd">Не беспокоить</string>
+    <string name="desc_remote_general_dnd">Режим «Не беспокоить» может понадобится, когда вы пытаетесь поспать днём и не хотите, чтобы кто-то нарушил ваш сон. Он закрывает двери номера и сообщает работникам отеля о том, что эта комната не должна быть посещена, к примеру, при уборке!</string>
+    <string name="ttl_remote_general_dnd_enable">Включить</string>
+    <string name="ttl_remote_general_dnd_disable">Отключить</string>
+
+    <string name="ttl_request_item_remove">Отменить</string>
+
+    <string name="ttl_requests_now">Текущие заявки</string>
+    <string name="ttl_requests_now_time">Время создания: %s</string>
+    <string name="ttl_requests_now_comment">Дополнение: %s</string>
+
+    <string name="ttl_qr_code_toolbar">Авторизация с помощью QR</string>
+    <string name="desc_qr_code_toolbar">Используйте QR, полученный при заезде</string>
+    <string name="sts_qr_scanner_waiting">Ожидание QR-кода…</string>
+    <string name="sts_qr_scanner_validating">Проверка…</string>
+    <string name="sts_qr_scanner_invalid">QR-код неверен!</string>
+
+    <string name="ttl_remote_authentification_required">Требуется авторизация!</string>
+    <string name="desc_remote_authentification_required">Для использования пульта управления и прочих функций требуется авторизация. Для получения QR-кода можно обратиться на ресепшн, после чего его необходимо отсканировать. Открыть сканер можно с помощью кнопки ниже или с помощью иконки QR в верхней части!</string>
+    <string name="ttl_remote_authentification_required_scan">Отсканировать</string>
 </resources>

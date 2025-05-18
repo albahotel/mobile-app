@@ -1,7 +1,6 @@
 package dev.rexe.hotelremote.managers
 
 import android.bluetooth.BluetoothGattCharacteristic
-import android.util.Log
 import dev.rexe.hotelremote.bluetooth.BluetoothLEService
 import dev.rexe.hotelremote.protofiles.Message
 
@@ -9,22 +8,38 @@ object BluetoothDoorManager {
     @JvmField
     var bluetoothLEService: BluetoothLEService? = null
 
-    private var lightStatus: Boolean = false
     private var doorLockStatus: Boolean = true
-    private var nextLock: Int = 0
+    private var lightStatus: Boolean = false
+
+    fun fullDataInFields() {
+        if (bluetoothLEService != null) {
+            val stB = Message.GetState.newBuilder()
+            val cm = stB.build()
+
+            bluetoothLEService?.addToQueueForWriting(BluetoothLEService.WriteRequest(cm.toByteArray(),
+                BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT))
+        }
+    }
 
     fun setDoorLockStatus(locked: Boolean) {
         if (bluetoothLEService != null) {
-            val b = Message.ClientMessage.newBuilder()
             val stB = Message.SetState.newBuilder()
-            stB.setState(if (locked) Message.States.DoorLockOpen else Message.States.DoorLockClose)
-            b.setSetState(stB)
+            stB.setState(if (locked) Message.States.DoorLockClose else Message.States.DoorLockOpen)
             val cm = stB.build()
 
-            nextLock++
-
             doorLockStatus = locked
+            bluetoothLEService?.addToQueueForWriting(BluetoothLEService.WriteRequest(cm.toByteArray(),
+                BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT))
+        }
+    }
 
+    fun setLightStatus(lightOn: Boolean) {
+        if (bluetoothLEService != null) {
+            val stB = Message.SetState.newBuilder()
+            stB.setState(if (lightOn) Message.States.LightOn else Message.States.LightOff)
+            val cm = stB.build()
+
+            lightStatus = lightOn
             bluetoothLEService?.addToQueueForWriting(BluetoothLEService.WriteRequest(cm.toByteArray(),
                 BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT))
         }
@@ -32,5 +47,9 @@ object BluetoothDoorManager {
 
     fun getDoorLockStatus(): Boolean {
         return doorLockStatus
+    }
+
+    fun getLightStatus(): Boolean {
+        return lightStatus
     }
 }

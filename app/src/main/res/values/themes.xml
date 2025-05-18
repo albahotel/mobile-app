@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.HotelRemote" parent="Base.Theme.HotelRemote" />
+    <style name="Theme.HotelRemote.Remote" parent="Theme.HotelRemote" />
+    <style name="Theme.HotelRemote.QRScanner" parent="Theme.Material3.Dark.NoActionBar" />
 </resources>
